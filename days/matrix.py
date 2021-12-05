@@ -1,27 +1,10 @@
 from typing import List
 
 
-def _derive_columns(rows: List[List[int]]) -> List[List[int]]:
-    col1 = list()
-    col2 = list()
-    col3 = list()
-    col4 = list()
-    col5 = list()
-
-    for row in rows:
-        col1.append(row[0])
-        col2.append(row[1])
-        col3.append(row[2])
-        col4.append(row[3])
-        col5.append(row[4])
-    return [col1, col2, col3, col4, col5]
-
-
 class Matrix:
 
     def __init__(self, rows: List[List[int]]):
         self.rows = rows
-        self.columns = _derive_columns(rows)
         self.hits = dict()
         self.has_won = False
         self.winning_score = 0
@@ -64,7 +47,6 @@ class Matrix:
 if __name__ == '__main__':
     rows = [[1, 2, 3, 4, 5], [6, 7, 8, 9, 10], [11, 12, 13, 14, 15], [16, 17, 18, 19, 20], [21, 22, 23, 24, 25]]
     m = Matrix(rows)
-    print(m.columns)
     m.mark_shot(1)
     m.mark_shot(6)
     m.mark_shot(11)
