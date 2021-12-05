@@ -48,4 +48,9 @@ def generate_all_coordinates_for_line(x1, y1, x2, y2):
 
 
 if __name__ == "__main__":
+    import time
+
+    s = time.perf_counter_ns()
     run()
+    e = time.perf_counter_ns()
+    print(f"{e-s}")
