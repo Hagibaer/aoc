@@ -22,26 +22,27 @@ def run():
 
 def generate_all_coordinates_for_line(x1, y1, x2, y2):
     coords = list()
-    x_coordinates, y_coordinates = None, None
+    is_diagonal = True
     if x1 == x2:
+        is_diagonal = False
         for val in range(min([y1, y2]), max([y1, y2]) + 1):
             coords.append((x1, val))
 
     if y1 == y2:
+        is_diagonal = False
         for val in range(min([x1, x2]), max([x1, x2]) + 1):
             coords.append((val, y1))
 
-    if x1 < x2:
-        x_coordinates = list(range(x1, x2 + 1))
-    elif x2 < x1:
-        x_coordinates = list(range(x1, x2 - 1, -1))
+    if is_diagonal:
+        if x1 < x2:
+            x_coordinates = list(range(x1, x2 + 1))
+        else:
+            x_coordinates = list(range(x1, x2 - 1, -1))
 
-    if y1 < y2:
-        y_coordinates = list(range(y1, y2 + 1))
-    elif y2 < y1:
-        y_coordinates = list(range(y1, y2 - 1, -1))
-
-    if x_coordinates and y_coordinates:
+        if y1 < y2:
+            y_coordinates = list(range(y1, y2 + 1))
+        else:
+            y_coordinates = list(range(y1, y2 - 1, -1))
         coords.extend([(x, y) for x, y in zip(x_coordinates, y_coordinates)])
 
     return coords
